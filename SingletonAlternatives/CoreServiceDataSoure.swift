@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreBluetooth
+import CoreMotion
 
 struct ExampleData {
     let timeStamp = Date()
@@ -21,31 +21,22 @@ protocol CoreServiceDataDelegate {
 }
 
 
-class CoreServiceDataSource: NSObject, CBCentralManagerDelegate {
+class CoreServiceDataSource: NSObject {
     private var serviceDataDelegate: CoreServiceDataDelegate?
-    private var centralManager: CBCentralManager?
+    let motionManager = CMMotionManager()
     
     init(delegate: CoreServiceDataDelegate) {
         super.init()
         
         serviceDataDelegate = delegate
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-    }
-    
-    //MARK:- CBCentralManagerDelegate
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : AnyObject], rssi RSSI: NSNumber) {
         
-        print(peripheral)
-        
-        guard let delegate = serviceDataDelegate else { return }
-        
-        if let peripheralName = peripheral.name {
-            delegate.coreServicedidUpdateData(ExampleData(value: peripheralName))
+        motionManager.gyroUpdateInterval = 5
+        motionManager.startGyroUpdates(to: OperationQueue.current()!) { (gyroData, error) in
+            guard let delegate = self.serviceDataDelegate else { return }
+
+            print("\nData update")
+
+            delegate.coreServicedidUpdateData(ExampleData(value: gyroData.debugDescription))
         }
-    }
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print("Another delegate")
     }
 }

@@ -14,30 +14,23 @@ class ViewController1: UIViewController, CorePresenterDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.presenter = CorePresenter(delegate: self)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        presenter = CorePresenter(delegate: self)
     }
     
     //MARK:- CorePresenterDelegate
     
     func didUpdateDeviceState(_ state: DeviceState) {
-        print("ViewController1 received DeviceState: \(state)")
+        print("❶ received DeviceState: \(state)")
     }
     
     func didUpdateServiceState(_ state: ServiceState) {
-        print("ViewController1 received ServiceState: \(state)")
+        print("❶ received ServiceState: \(state)")
     }
     
     func didUpdateData(_ data: ExampleData) {
-        print("ViewController1 received data: \(data.timeStamp) -  \(data.value)")
+        print("❶ received ExampleData: \(data.timeStamp) -  \(data.value)")
+        print("❶ current DeviceState: \(presenter.deviceState)")
+        print("❶ current ServiceState: \(presenter.serviceState)")
     }
     
 }
