@@ -28,15 +28,15 @@ class ViewController1: UIViewController, CorePresenterDelegate {
     
     //MARK:- CorePresenterDelegate
     
-    func didUpdateDeviceState(state: DeviceState) {
+    func didUpdateDeviceState(_ state: DeviceState) {
         print("ViewController1 received DeviceState: \(state)")
     }
     
-    func didUpdateServiceState(state: ServiceState) {
+    func didUpdateServiceState(_ state: ServiceState) {
         print("ViewController1 received ServiceState: \(state)")
     }
     
-    func didUpdateData(data: ExampleData) {
+    func didUpdateData(_ data: ExampleData) {
         print("ViewController1 received data: \(data.timeStamp) -  \(data.value)")
     }
     

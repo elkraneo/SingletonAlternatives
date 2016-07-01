@@ -10,14 +10,14 @@ import Foundation
 import CoreBluetooth
 
 struct ExampleData {
-    let timeStamp = NSDate()
+    let timeStamp = Date()
     let value: String
 }
 
 protocol CoreServiceDataDelegate {
     var serviceDataSource: CoreServiceDataSource! { get }
     
-    func coreServicedidUpdateData(data: ExampleData)
+    func coreServicedidUpdateData(_ data: ExampleData)
 }
 
 
@@ -29,12 +29,12 @@ class CoreServiceDataSource: NSObject, CBCentralManagerDelegate {
         super.init()
         
         serviceDataDelegate = delegate
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
     }
     
     //MARK:- CBCentralManagerDelegate
     
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : AnyObject], rssi RSSI: NSNumber) {
         
         print(peripheral)
         
@@ -45,7 +45,7 @@ class CoreServiceDataSource: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func centralManagerDidUpdateState(central: CBCentralManager) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print("Another delegate")
     }
 }
