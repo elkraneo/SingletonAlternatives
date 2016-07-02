@@ -20,8 +20,8 @@ enum DeviceState {
 protocol CoreServiceDelegate {
     var service: CoreService! { get }
     
-    func coreService(_ service: CoreService, didUpdateServiceState state: ServiceState)
-    func coreService(_ service: CoreService, didUpdateDeviceState state: DeviceState)
+    func coreService(service: CoreService, didUpdateServiceState state: ServiceState)
+    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState)
 }
 
 
@@ -33,18 +33,18 @@ class CoreService: NSObject, CBCentralManagerDelegate {
         super.init()
         
         serviceDelegate = delegate
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
     }
     
     //MARK:- CBCentralManagerDelegate
     
-    func centralManagerDidUpdateState(_ central: CBCentralManager)
+    func centralManagerDidUpdateState(central: CBCentralManager)
     {
         guard let delegate = serviceDelegate else { return }
         
         print("\nState update")
 
-        if (central.state == .poweredOn)
+        if (central.state == .PoweredOn)
         {
             delegate.coreService(self, didUpdateDeviceState: .active)
             delegate.coreService(self, didUpdateServiceState: .connected)

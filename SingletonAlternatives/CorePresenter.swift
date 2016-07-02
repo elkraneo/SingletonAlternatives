@@ -11,9 +11,9 @@ import Foundation
 protocol CorePresenterDelegate {
     var presenter: CorePresenter! { get }
     
-    func didUpdateServiceState(_ state: ServiceState)
-    func didUpdateDeviceState(_ state: DeviceState)
-    func didUpdateData(_ data: ExampleData)
+    func didUpdateServiceState(state: ServiceState)
+    func didUpdateDeviceState(state: DeviceState)
+    func didUpdateData(data: ExampleData)
 }
 
 
@@ -37,6 +37,8 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     var serviceData: ExampleData? {
         didSet {
+            //dont update display if device .off
+            guard deviceState != .off else { return }
             delegate.didUpdateData(serviceData!)
         }
     }
@@ -50,17 +52,17 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     //MARK:- CoreServiceDelegate
     
-    func coreService(_ service: CoreService, didUpdateDeviceState state: DeviceState) {
+    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState) {
         deviceState = state
     }
     
-    func coreService(_ service: CoreService, didUpdateServiceState state: ServiceState) {
+    func coreService(service: CoreService, didUpdateServiceState state: ServiceState) {
         serviceState = state
     }
     
     //MARK:- CoreServiceDataDelegate
     
-    func coreServicedidUpdateData(_ data: ExampleData) {
+    func coreServicedidUpdateData(data: ExampleData) {
         serviceData = data
     }
 }

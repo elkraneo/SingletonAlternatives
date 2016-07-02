@@ -10,14 +10,26 @@ import Foundation
 import CoreMotion
 
 struct ExampleData {
-    let timeStamp = Date()
-    let value: String
+    var value: String
+    
+    var x: Double
+    var y: Double
+    var z: Double
+    
+    mutating func update(value value: String, x: Double, y: Double, z:Double) -> ExampleData {
+        self.value = value
+        self.x = x
+        self.y = y
+        self.z = z
+        
+        return self
+    }
 }
 
 protocol CoreServiceDataDelegate {
     var serviceDataSource: CoreServiceDataSource! { get }
     
-    func coreServicedidUpdateData(_ data: ExampleData)
+    func coreServicedidUpdateData(data: ExampleData)
 }
 
 
@@ -29,14 +41,12 @@ class CoreServiceDataSource: NSObject {
         super.init()
         
         serviceDataDelegate = delegate
+        var data = ExampleData(value: "", x: 0, y: 0, z: 0)
         
-        motionManager.gyroUpdateInterval = 5
-        motionManager.startGyroUpdates(to: OperationQueue.current()!) { (gyroData, error) in
+        // motionManager.gyroUpdateInterval = 5
+        motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue()!) { (gyroData, error) in
             guard let delegate = self.serviceDataDelegate else { return }
-
-            print("\nData update")
-
-            delegate.coreServicedidUpdateData(ExampleData(value: gyroData.debugDescription))
+            delegate.coreServicedidUpdateData(data.update(value: gyroData.debugDescription, x: gyroData!.rotationRate.x, y: gyroData!.rotationRate.y, z: gyroData!.rotationRate.z))
         }
     }
 }
