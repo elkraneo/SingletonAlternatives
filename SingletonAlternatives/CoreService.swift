@@ -42,7 +42,9 @@ class CoreService: NSObject, CBCentralManagerDelegate {
     {
         guard let delegate = serviceDelegate else { return }
         
-        if (central.state == CBCentralManagerState.PoweredOn)
+        print("\nState update")
+
+        if (central.state == .PoweredOn)
         {
             delegate.coreService(self, didUpdateDeviceState: .active)
             delegate.coreService(self, didUpdateServiceState: .connected)

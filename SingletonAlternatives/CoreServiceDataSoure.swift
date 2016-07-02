@@ -7,11 +7,23 @@
 //
 
 import Foundation
-import CoreBluetooth
+import CoreMotion
 
 struct ExampleData {
-    let timeStamp = NSDate()
-    let value: String
+    var value: String
+    
+    var x: Double
+    var y: Double
+    var z: Double
+    
+    mutating func update(value value: String, x: Double, y: Double, z:Double) -> ExampleData {
+        self.value = value
+        self.x = x
+        self.y = y
+        self.z = z
+        
+        return self
+    }
 }
 
 protocol CoreServiceDataDelegate {
@@ -21,31 +33,20 @@ protocol CoreServiceDataDelegate {
 }
 
 
-class CoreServiceDataSource: NSObject, CBCentralManagerDelegate {
+class CoreServiceDataSource: NSObject {
     private var serviceDataDelegate: CoreServiceDataDelegate?
-    private var centralManager: CBCentralManager?
+    let motionManager = CMMotionManager()
     
     init(delegate: CoreServiceDataDelegate) {
         super.init()
         
         serviceDataDelegate = delegate
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
-    }
-    
-    //MARK:- CBCentralManagerDelegate
-    
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        var data = ExampleData(value: "", x: 0, y: 0, z: 0)
         
-        print(peripheral)
-        
-        guard let delegate = serviceDataDelegate else { return }
-        
-        if let peripheralName = peripheral.name {
-            delegate.coreServicedidUpdateData(ExampleData(value: peripheralName))
+        // motionManager.gyroUpdateInterval = 5
+        motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue()!) { (gyroData, error) in
+            guard let delegate = self.serviceDataDelegate else { return }
+            delegate.coreServicedidUpdateData(data.update(value: gyroData.debugDescription, x: gyroData!.rotationRate.x, y: gyroData!.rotationRate.y, z: gyroData!.rotationRate.z))
         }
-    }
-    
-    func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("Another delegate")
     }
 }
