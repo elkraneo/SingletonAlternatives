@@ -19,8 +19,8 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
         self.presenter = CorePresenter(delegate: self)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         updateDebugView(state: presenter.deviceState)
         if let data = presenter.serviceData {
