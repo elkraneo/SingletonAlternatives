@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol CorePresenterDelegate {
     var presenter: CorePresenter! { get }
@@ -17,11 +18,12 @@ protocol CorePresenterDelegate {
 }
 
 
-class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
+class CorePresenter {
     
-    private var delegate: CorePresenterDelegate!
-    var service: CoreService!
-    var serviceDataSource: CoreServiceDataSource!
+    private let disposeBag = DisposeBag()
+    private var delegate: CorePresenterDelegate
+    private var service: CoreService
+    private var serviceDataSource: CoreServiceDataSource
     
     var deviceState = DeviceState.off {
         didSet {
@@ -44,23 +46,35 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     init(delegate: CorePresenterDelegate) {
         self.delegate = delegate
-        self.service = CoreService(delegate: self)
-        self.serviceDataSource = CoreServiceDataSource(delegate: self)
+        self.service = CoreService()
+        self.serviceDataSource = CoreServiceDataSource()
+        
+        setupObservers()
     }
     
-    //MARK:- CoreServiceDelegate
-    
-    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState) {
-        deviceState = state
-    }
-    
-    func coreService(service: CoreService, didUpdateServiceState state: ServiceState) {
-        serviceState = state
-    }
-    
-    //MARK:- CoreServiceDataDelegate
-    
-    func coreServicedidUpdateData(data: ExampleData) {
-        serviceData = data
+    func setupObservers() {
+        self.service.observeCentralManagerState()
+            .subscribeNext { (deviceState, serviceState) in
+                self.deviceState = deviceState
+                self.serviceState = serviceState
+            }
+            .addDisposableTo(disposeBag)
     }
 }
+
+
+//    //MARK:- CoreServiceDelegate
+//
+//    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState) {
+//        deviceState = state
+//    }
+//
+//    func coreService(service: CoreService, didUpdateServiceState state: ServiceState) {
+//        serviceState = state
+//    }
+//
+//    //MARK:- CoreServiceDataDelegate
+//
+//    func coreServicedidUpdateData(data: ExampleData) {
+//        serviceData = data
+//    }

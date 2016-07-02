@@ -21,6 +21,7 @@
 		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */; };
 		59CC59731D27B69F00812E73 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CC59711D27B69F00812E73 /* RxCocoa.framework */; };
 		59CC59741D27B69F00812E73 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CC59721D27B69F00812E73 /* RxSwift.framework */; };
+		59CC59781D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSoure.swift; sourceTree = "<group>"; };
 		59CC59711D27B69F00812E73 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		59CC59721D27B69F00812E73 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCBCentralManagerDelegateProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				5945F6B01D251992004E12E8 /* ViewController1.swift */,
 				59CA7B6F1D255EF200C8A9FF /* ViewController2.swift */,
 				5945F6E41D2545E6004E12E8 /* CorePresenter.swift */,
+				59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */,
 				59CC59751D27B6AD00812E73 /* Frameworks */,
 				5945F6BA1D251993004E12E8 /* LaunchScreen.storyboard */,
 				5945F6B21D251992004E12E8 /* Main.storyboard */,
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59CC59781D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift in Sources */,
 				5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */,
 				5945F6B11D251992004E12E8 /* ViewController1.swift in Sources */,
 				5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */,

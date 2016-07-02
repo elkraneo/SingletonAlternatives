@@ -8,44 +8,55 @@
 
 import Foundation
 import CoreBluetooth
+import RxSwift
+import RxCocoa
 
 struct ExampleData {
     let timeStamp = NSDate()
     let value: String
 }
 
-protocol CoreServiceDataDelegate {
-    var serviceDataSource: CoreServiceDataSource! { get }
-    
-    func coreServicedidUpdateData(data: ExampleData)
-}
+/// http://blog.edenmsg.com/rxswift-migrate-delegates-to-beautiful-observables/
 
+//class RxCBCentralManagerDelegateProxy: DelegateProxy, CBCentralManagerDelegate, DelegateProxyType {
+//    class func currentDelegateFor(object: AnyObject) -> AnyObject? {
+//        let locationManager: CBCentralManager = object as! CBCentralManager
+//        return locationManager.delegate
+//    }
+//    
+//    class func setCurrentDelegate(delegate: AnyObject?, toObject object: AnyObject) {
+//        let locationManager: CBCentralManager = object as! CBCentralManager
+//        locationManager.delegate = delegate as? CBCentralManagerDelegate
+//    }
+//    
+//    internal func centralManagerDidUpdateState(central: CBCentralManager) {
+//        interceptedSelector(#selector(CBCentralManagerDelegate.centralManagerDidUpdateState(_:)), withArguments: [central])
+//    }
+//}
+//
+//extension CBCentralManager {
+//    public var rx_delegate: DelegateProxy {
+//        return RxCBCentralManagerDelegateProxy.proxyForObject(self)
+//    }
+//    
+//    public var rx_didUpdateState: Observable<CBCentralManagerState!> {
+//        return rx_delegate.observe(#selector(CBCentralManagerDelegate.centralManagerDidUpdateState(_:)))
+//            .map { a in
+//                return (a[0] as? CBCentralManager)?.state
+//        }
+//    }
+//}
 
-class CoreServiceDataSource: NSObject, CBCentralManagerDelegate {
-    private var serviceDataDelegate: CoreServiceDataDelegate?
-    private var centralManager: CBCentralManager?
+class CoreServiceDataSource {
+//    private var centralManager: CBCentralManager
+    private let disposeBag = DisposeBag()
     
-    init(delegate: CoreServiceDataDelegate) {
-        super.init()
-        
-        serviceDataDelegate = delegate
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
-    }
-    
-    //MARK:- CBCentralManagerDelegate
-    
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        
-        print(peripheral)
-        
-        guard let delegate = serviceDataDelegate else { return }
-        
-        if let peripheralName = peripheral.name {
-            delegate.coreServicedidUpdateData(ExampleData(value: peripheralName))
-        }
-    }
-    
-    func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("Another delegate")
+    init() {
+//        centralManager = CBCentralManager()
+//        centralManager.rx_didUpdateState
+//            .subscribeNext { (state) in
+//                print(state)
+//            }
+//            .addDisposableTo(disposeBag)
     }
 }
