@@ -39,8 +39,6 @@ class CorePresenter {
     
     var serviceData: ExampleData? {
         didSet {
-             //dont update display if device .off
-            guard deviceState != .off else { return }
             delegate.didUpdateData(serviceData!)
         }
     }
@@ -64,6 +62,9 @@ class CorePresenter {
         
         serviceDataSource.observeData()
             .subscribeNext { (data) in
+                //dont update display if device .off
+                guard self.deviceState != .off else { return }
+                
                 self.serviceData = data
             }
             .addDisposableTo(disposeBag)
