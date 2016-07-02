@@ -53,28 +53,18 @@ class CorePresenter {
     }
     
     func setupObservers() {
-        self.service.observeCentralManagerState()
+        service.observeCentralManagerState()
             .subscribeNext { (deviceState, serviceState) in
                 self.deviceState = deviceState
                 self.serviceState = serviceState
             }
             .addDisposableTo(disposeBag)
+        
+        serviceDataSource.observeGyroData()
+            .subscribeNext { (data) in
+                self.serviceData = data
+            }
+            .addDisposableTo(disposeBag)
     }
+
 }
-
-
-//    //MARK:- CoreServiceDelegate
-//
-//    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState) {
-//        deviceState = state
-//    }
-//
-//    func coreService(service: CoreService, didUpdateServiceState state: ServiceState) {
-//        serviceState = state
-//    }
-//
-//    //MARK:- CoreServiceDataDelegate
-//
-//    func coreServicedidUpdateData(data: ExampleData) {
-//        serviceData = data
-//    }

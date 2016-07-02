@@ -20,15 +20,13 @@ enum DeviceState {
 
 
 class CoreService {
-    private var centralManager: CBCentralManager
-    
-    init() {
-        centralManager = CBCentralManager()
-    }
+    private let centralManager = CBCentralManager()
     
     func observeCentralManagerState() -> Observable<(DeviceState, ServiceState)> {
         return centralManager.rx_didUpdateState
             .map({ state -> (DeviceState, ServiceState) in
+                print("\nState update")
+
                 switch state as CBCentralManagerState {
                 case .PoweredOn:
                     return (.active, .connected)
