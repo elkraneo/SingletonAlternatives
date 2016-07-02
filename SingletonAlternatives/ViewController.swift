@@ -18,13 +18,22 @@ class ViewController: UIViewController, CorePresenterDelegate {
         self.presenter = CorePresenter(delegate: self)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateDebugView(state: presenter.deviceState)
+        if let data = presenter.serviceData {
+            updateDebugView(data: data)
+        }
+    }
+    
     //MARK:- CorePresenterDelegate
     
     func didUpdateDeviceState(state: DeviceState) {
         print("\(self) didUpdateDeviceState: \(state)")
         
         guard (debugView != nil) else { return }
-        debugView.stateLabel.text = "\(state)"
+        updateDebugView(state: state)
     }
     
     func didUpdateServiceState(state: ServiceState) {
@@ -37,6 +46,16 @@ class ViewController: UIViewController, CorePresenterDelegate {
         //print("\(self) current ServiceState: \(presenter.serviceState)")
         
         guard (debugView != nil) else { return }
+        updateDebugView(data: data)
+    }
+    
+    //MARK:- Update helpers
+    
+    func updateDebugView(state state: DeviceState) {
+        debugView.stateLabel.text = String(state)
+    }
+    
+    func updateDebugView(data data: ExampleData) {
         debugView.xLabel.text = String(data.x)
         debugView.yLabel.text = String(data.y)
         debugView.zLabel.text = String(data.z)

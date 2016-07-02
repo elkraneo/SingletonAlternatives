@@ -37,8 +37,6 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     var serviceData: ExampleData? {
         didSet {
-            //dont update display if device .off
-            guard deviceState != .off else { return }
             delegate.didUpdateData(serviceData!)
         }
     }
@@ -63,6 +61,8 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     //MARK:- CoreServiceDataDelegate
     
     func coreServicedidUpdateData(data: ExampleData) {
+        //dont update display if device .off
+        guard deviceState != .off else { return }
         serviceData = data
     }
 }

@@ -19,6 +19,15 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
         self.presenter = CorePresenter(delegate: self)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateDebugView(state: presenter.deviceState)
+        if let data = presenter.serviceData {
+            updateDebugView(data: data)
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -26,12 +35,20 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return 10000
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-                
+        
+        if let cell = cell as? CollectionViewCell {
+            updateCell(cell, state: presenter.deviceState)
+            
+            if let data = presenter.serviceData {
+                updateCell(cell, data: data)
+            }
+        }
+        
         return cell
     }
     
@@ -40,7 +57,7 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
     func didUpdateDeviceState(state: DeviceState) {
         print("\(self) didUpdateDeviceState: \(state)")
         
-        updateCells(state: state)
+        updateDebugView(state: state)
     }
     
     func didUpdateServiceState(state: ServiceState) {
@@ -48,10 +65,12 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
     }
     
     func didUpdateData(data: ExampleData) {
-        updateCells(data: data)
+        updateDebugView(data: data)
     }
     
-    func updateCells(data data: ExampleData) {
+    //MARK:- Update helpers
+    
+    func updateDebugView(data data: ExampleData) {
         if let visibleCells = collectionView?.visibleCells() as? [CollectionViewCell] {
             for cell in visibleCells {
                 updateCell(cell, data: data)
@@ -59,7 +78,7 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
         }
     }
     
-    func updateCells(state state: DeviceState) {
+    func updateDebugView(state state: DeviceState) {
         if let visibleCells = collectionView?.visibleCells() as? [CollectionViewCell] {
             for cell in visibleCells {
                 updateCell(cell, state: state)
@@ -72,7 +91,7 @@ class CollectionViewController: UICollectionViewController, CorePresenterDelegat
         cell.debugView.yLabel.text = String(data.y)
         cell.debugView.zLabel.text = String(data.z)
     }
-
+    
     func updateCell(cell: CollectionViewCell, state: DeviceState) {
         cell.debugView.stateLabel.text = String(state)
     }
