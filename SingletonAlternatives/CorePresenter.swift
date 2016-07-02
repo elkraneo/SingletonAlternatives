@@ -25,19 +25,19 @@ class CorePresenter {
     private var service: CoreService
     private var serviceDataSource: CoreServiceDataSource
     
-    var deviceState = DeviceState.off {
+    private(set) var deviceState = DeviceState.off {
         didSet {
             delegate.didUpdateDeviceState(deviceState)
         }
     }
     
-    var serviceState = ServiceState.bluetoothOff {
+    private(set) var serviceState = ServiceState.bluetoothOff {
         didSet {
             delegate.didUpdateServiceState(serviceState)
         }
     }
     
-    var serviceData: ExampleData? {
+    private(set) var serviceData: ExampleData? {
         didSet {
             delegate.didUpdateData(serviceData!)
         }
@@ -64,7 +64,6 @@ class CorePresenter {
             .subscribeNext { (data) in
                 //dont update display if device .off
                 guard self.deviceState != .off else { return }
-                
                 self.serviceData = data
             }
             .addDisposableTo(disposeBag)
