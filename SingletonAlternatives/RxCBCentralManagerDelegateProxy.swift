@@ -10,9 +10,14 @@ import RxSwift
 import RxCocoa
 import CoreBluetooth
 
-/// http://blog.edenmsg.com/rxswift-migrate-delegates-to-beautiful-observables/
+/*
+ - http://blog.edenmsg.com/rxswift-migrate-delegates-to-beautiful-observables/
+ - https://samritchie.net/2016/05/12/rxswift-delegateproxy-with-required-methods/
+ */
 
 class RxCBCentralManagerDelegateProxy: DelegateProxy, CBCentralManagerDelegate, DelegateProxyType {
+    let centralManagerSubject = PublishSubject<CBCentralManager>()
+    
     class func currentDelegateFor(object: AnyObject) -> AnyObject? {
         let centralManager: CBCentralManager = object as! CBCentralManager
         return centralManager.delegate
@@ -24,7 +29,12 @@ class RxCBCentralManagerDelegateProxy: DelegateProxy, CBCentralManagerDelegate, 
     }
     
     internal func centralManagerDidUpdateState(central: CBCentralManager) {
-        interceptedSelector(#selector(CBCentralManagerDelegate.centralManagerDidUpdateState(_:)), withArguments: [central])
+        centralManagerSubject.onNext(central)
+        self.forwardToDelegate()?.centralManagerDidUpdateState(central)
+    }
+    
+    deinit {
+        centralManagerSubject.onCompleted()
     }
 }
 
@@ -34,9 +44,10 @@ extension CBCentralManager {
     }
     
     public var rx_didUpdateState: Observable<CBCentralManagerState!> {
-        return rx_delegate.observe(#selector(CBCentralManagerDelegate.centralManagerDidUpdateState(_:)))
-            .map { a in
-                return (a[0] as? CBCentralManager)?.state
+        let proxy = RxCBCentralManagerDelegateProxy.proxyForObject(self)
+        return proxy.centralManagerSubject
+            .map { central in
+                return central.state
         }
     }
 }

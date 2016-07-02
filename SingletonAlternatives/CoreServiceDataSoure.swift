@@ -19,7 +19,7 @@ struct ExampleData {
 class CoreServiceDataSource {
     private let motionManager = CMMotionManager()
 
-    func observeGyroData() -> Observable<ExampleData> {
+    func observeData() -> Observable<ExampleData> {
         return Observable.create { observer in
             self.motionManager.gyroUpdateInterval = 5
             self.motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue()!) { (gyroData, error) in

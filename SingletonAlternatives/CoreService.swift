@@ -22,7 +22,7 @@ enum DeviceState {
 class CoreService {
     private let centralManager = CBCentralManager()
     
-    func observeCentralManagerState() -> Observable<(DeviceState, ServiceState)> {
+    func observeState() -> Observable<(DeviceState, ServiceState)> {
         return centralManager.rx_didUpdateState
             .map({ state -> (DeviceState, ServiceState) in
                 print("\nState update")

@@ -53,14 +53,14 @@ class CorePresenter {
     }
     
     func setupObservers() {
-        service.observeCentralManagerState()
+        service.observeState()
             .subscribeNext { (deviceState, serviceState) in
                 self.deviceState = deviceState
                 self.serviceState = serviceState
             }
             .addDisposableTo(disposeBag)
         
-        serviceDataSource.observeGyroData()
+        serviceDataSource.observeData()
             .subscribeNext { (data) in
                 self.serviceData = data
             }

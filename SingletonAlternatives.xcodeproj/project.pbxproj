@@ -119,7 +119,6 @@
 				5945F6B01D251992004E12E8 /* ViewController1.swift */,
 				59CA7B6F1D255EF200C8A9FF /* ViewController2.swift */,
 				5945F6E41D2545E6004E12E8 /* CorePresenter.swift */,
-				59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */,
 				59CC59751D27B6AD00812E73 /* Frameworks */,
 				5945F6BA1D251993004E12E8 /* LaunchScreen.storyboard */,
 				5945F6B21D251992004E12E8 /* Main.storyboard */,
@@ -153,6 +152,7 @@
 			children = (
 				5945F6E21D251FC8004E12E8 /* CoreService.swift */,
 				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */,
+				59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */,
 			);
 			name = FakeBLE;
 			sourceTree = "<group>";
