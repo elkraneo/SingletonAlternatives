@@ -18,6 +18,15 @@ class ViewController: UIViewController, CorePresenterDelegate {
         self.presenter = CorePresenter(delegate: self)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        updateDebugView(state: presenter.deviceState)
+        if let data = presenter.serviceData {
+            updateDebugView(data: data)
+        }
+    }
+    
     //MARK:- CorePresenterDelegate
     
     func didUpdateDeviceState(state: DeviceState) {
