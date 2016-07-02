@@ -39,6 +39,8 @@ class CorePresenter {
     
     var serviceData: ExampleData? {
         didSet {
+             //dont update display if device .off
+            guard deviceState != .off else { return }
             delegate.didUpdateData(serviceData!)
         }
     }
