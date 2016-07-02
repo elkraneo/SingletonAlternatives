@@ -23,19 +23,19 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     var service: CoreService!
     var serviceDataSource: CoreServiceDataSource!
     
-    var deviceState = DeviceState.off {
+    private(set) var deviceState = DeviceState.off {
         didSet {
             delegate.didUpdateDeviceState(deviceState)
         }
     }
     
-    var serviceState = ServiceState.bluetoothOff {
+    private(set) var serviceState = ServiceState.bluetoothOff {
         didSet {
             delegate.didUpdateServiceState(serviceState)
         }
     }
     
-    var serviceData: ExampleData? {
+    private(set) var serviceData: ExampleData? {
         didSet {
             delegate.didUpdateData(serviceData!)
         }
