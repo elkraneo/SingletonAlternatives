@@ -17,8 +17,8 @@ protocol CorePresenterDelegate {
     func didUpdateData(data: ExampleData)
 }
 
-
-class CorePresenter: CoreServiceDataDelegate, StoreSubscriber {
+//CoreServiceDataDelegate
+class CorePresenter: StoreSubscriber {
     
     private var delegate: CorePresenterDelegate!
     var service: CoreService!
@@ -26,7 +26,7 @@ class CorePresenter: CoreServiceDataDelegate, StoreSubscriber {
     
     private(set) var deviceState = DeviceState.off {
         didSet {
-            //delegate.didUpdateDeviceState(deviceState)
+            delegate.didUpdateDeviceState(deviceState)
         }
     }
     
@@ -46,25 +46,25 @@ class CorePresenter: CoreServiceDataDelegate, StoreSubscriber {
     init(delegate: CorePresenterDelegate) {
         self.delegate = delegate
         self.service = CoreService()
-        self.serviceDataSource = CoreServiceDataSource(delegate: self)
+        // self.serviceDataSource = CoreServiceDataSource(delegate: self)
         
-        store.subscribe(self)
+        mainStore.subscribe(self)
     }
     
     deinit {
-        store.unsubscribe(self)
+       // mainStore.unsubscribe(self)
     }
     
     func newState(state: AppState) {
-// serviceState = state.serviceState
-         deviceState = state.deviceState
+        // serviceState = state.serviceState
+        deviceState = state.deviceState
     }
     
     //MARK:- CoreServiceDataDelegate
     
-    func coreServicedidUpdateData(data: ExampleData) {
-        //dont update display if device .off
-        guard deviceState != .off else { return }
-        serviceData = data
-    }
+//    func coreServicedidUpdateData(data: ExampleData) {
+//        //dont update display if device .off
+//        guard deviceState != .off else { return }
+//        serviceData = data
+//    }
 }

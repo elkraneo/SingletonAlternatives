@@ -9,21 +9,22 @@
 import Foundation
 import ReSwift
 
-struct AppReducer: Reducer {
-    func handleAction(action: Action, state: AppState?) -> AppState {
-        return AppState(
-            serviceState: serviceStateReducer(action, state: state?.serviceState),
-            deviceState: deviceStateReducer(action, state: state?.deviceState)
-        )
+func serviceStateReducer(action action: Action, state: ServiceState?) -> ServiceState {
+    var state = state ?? .bluetoothOff
+    
+    if let action = action as? UpdateServiceState {
+        state = action.state
     }
-}
-
-func serviceStateReducer(action: Action, state: ServiceState?) -> ServiceState {
-    let state = state ?? .bluetoothOff
+    
     return state
 }
 
-func deviceStateReducer(action: Action, state: DeviceState?) -> DeviceState {
-    let state = state ?? .off
+func deviceStateReducer(action action: Action, state: DeviceState?) -> DeviceState {
+    var state = state ?? .off
+
+    if let action = action as? UpdateDeviceState {
+        state = action.state
+    }
+    
     return state
 }

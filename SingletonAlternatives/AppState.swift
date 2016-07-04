@@ -10,6 +10,6 @@ import Foundation
 import ReSwift
 
 struct AppState: StateType {
-    var serviceState: ServiceState
     var deviceState: DeviceState
+    var serviceState: ServiceState
 }

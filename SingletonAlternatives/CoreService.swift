@@ -23,7 +23,6 @@ class CoreService: NSObject, CBCentralManagerDelegate {
     
     override init() {
         super.init()
-        
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
     }
     
@@ -35,13 +34,13 @@ class CoreService: NSObject, CBCentralManagerDelegate {
         
         if (central.state == .PoweredOn)
         {
-            store.dispatch(UpdateDeviceState(state: .active))
-            store.dispatch(UpdateServiceState(state: .connected))
+            mainStore.dispatch(UpdateDeviceState(state: .active))
+            mainStore.dispatch(UpdateServiceState(state: .connected))
         }
         else
         {
-            store.dispatch(UpdateDeviceState(state: .off))
-            store.dispatch(UpdateServiceState(state: .disconnected))
+            mainStore.dispatch(UpdateDeviceState(state: .off))
+            mainStore.dispatch(UpdateServiceState(state: .disconnected))
         }
     }
 }
