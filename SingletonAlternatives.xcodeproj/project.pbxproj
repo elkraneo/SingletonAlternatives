@@ -20,6 +20,11 @@
 		5945F6D21D251993004E12E8 /* SingletonAlternativesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6D11D251993004E12E8 /* SingletonAlternativesUITests.swift */; };
 		5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E21D251FC8004E12E8 /* CoreService.swift */; };
 		5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E41D2545E6004E12E8 /* CorePresenter.swift */; };
+		59BA22211D2A69720082B0D7 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA22201D2A69720082B0D7 /* ReSwift.framework */; };
+		59BA222F1D2A7FE50082B0D7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA222E1D2A7FE50082B0D7 /* AppState.swift */; };
+		59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22301D2A809E0082B0D7 /* ServiceActions.swift */; };
+		59BA22331D2A81530082B0D7 /* DeviceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22321D2A81530082B0D7 /* DeviceActions.swift */; };
+		59BA22351D2A81D90082B0D7 /* StateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22341D2A81D90082B0D7 /* StateReducer.swift */; };
 		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +65,11 @@
 		5945F6D31D251993004E12E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5945F6E21D251FC8004E12E8 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		5945F6E41D2545E6004E12E8 /* CorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePresenter.swift; sourceTree = "<group>"; };
+		59BA22201D2A69720082B0D7 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
+		59BA222E1D2A7FE50082B0D7 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		59BA22301D2A809E0082B0D7 /* ServiceActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceActions.swift; sourceTree = "<group>"; };
+		59BA22321D2A81530082B0D7 /* DeviceActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceActions.swift; sourceTree = "<group>"; };
+		59BA22341D2A81D90082B0D7 /* StateReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateReducer.swift; sourceTree = "<group>"; };
 		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSoure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BA22211D2A69720082B0D7 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,13 +122,16 @@
 		5945F6AD1D251992004E12E8 /* SingletonAlternatives */ = {
 			isa = PBXGroup;
 			children = (
+				59BA222B1D2A7FAA0082B0D7 /* Actions */,
+				59BA222C1D2A7FB20082B0D7 /* Reducers */,
+				59BA222D1D2A7FBD0082B0D7 /* State */,
 				5945F6AE1D251992004E12E8 /* AppDelegate.swift */,
 				5945F6B01D251992004E12E8 /* ViewController.swift */,
 				594394D81D28200E007957E6 /* CollectionViewController.swift */,
 				594394DA1D2820B4007957E6 /* CollectionViewCell.swift */,
 				5945F6E41D2545E6004E12E8 /* CorePresenter.swift */,
 				594394D61D281C9F007957E6 /* DebugView.swift */,
-				5945F6E11D251F09004E12E8 /* FakeBLE */,
+				59BA22231D2A69A20082B0D7 /* Frameworks */,
 				5945F6BA1D251993004E12E8 /* LaunchScreen.storyboard */,
 				5945F6B21D251992004E12E8 /* Main.storyboard */,
 				5945F6B51D251992004E12E8 /* SingletonAlternatives.xcdatamodeld */,
@@ -154,6 +168,40 @@
 			name = FakeBLE;
 			sourceTree = "<group>";
 		};
+		59BA22231D2A69A20082B0D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5945F6E11D251F09004E12E8 /* FakeBLE */,
+				59BA22201D2A69720082B0D7 /* ReSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59BA222B1D2A7FAA0082B0D7 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				59BA22301D2A809E0082B0D7 /* ServiceActions.swift */,
+				59BA22321D2A81530082B0D7 /* DeviceActions.swift */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		59BA222C1D2A7FB20082B0D7 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				59BA22341D2A81D90082B0D7 /* StateReducer.swift */,
+			);
+			name = Reducers;
+			sourceTree = "<group>";
+		};
+		59BA222D1D2A7FBD0082B0D7 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				59BA222E1D2A7FE50082B0D7 /* AppState.swift */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +212,7 @@
 				5945F6A71D251992004E12E8 /* Sources */,
 				5945F6A81D251992004E12E8 /* Frameworks */,
 				5945F6A91D251992004E12E8 /* Resources */,
+				59BA22221D2A69790082B0D7 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -284,20 +333,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		59BA22221D2A69790082B0D7 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReSwift.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5945F6A71D251992004E12E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */,
+				59BA222F1D2A7FE50082B0D7 /* AppState.swift in Sources */,
 				5945F6B11D251992004E12E8 /* ViewController.swift in Sources */,
+				59BA22331D2A81530082B0D7 /* DeviceActions.swift in Sources */,
 				594394DB1D2820B4007957E6 /* CollectionViewCell.swift in Sources */,
 				5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */,
+				59BA22351D2A81D90082B0D7 /* StateReducer.swift in Sources */,
 				594394D71D281C9F007957E6 /* DebugView.swift in Sources */,
 				594394D91D28200E007957E6 /* CollectionViewController.swift in Sources */,
 				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */,
 				5945F6AF1D251992004E12E8 /* AppDelegate.swift in Sources */,
 				5945F6B71D251992004E12E8 /* SingletonAlternatives.xcdatamodeld in Sources */,
+				59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +514,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SingletonAlternatives/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metodowhite.SingletonAlternatives;
@@ -458,6 +533,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SingletonAlternatives/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.metodowhite.SingletonAlternatives;

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReSwift
 
 protocol CorePresenterDelegate {
     var presenter: CorePresenter! { get }
@@ -17,7 +18,7 @@ protocol CorePresenterDelegate {
 }
 
 
-class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
+class CorePresenter: CoreServiceDataDelegate, StoreSubscriber {
     
     private var delegate: CorePresenterDelegate!
     var service: CoreService!
@@ -25,7 +26,7 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     private(set) var deviceState = DeviceState.off {
         didSet {
-            delegate.didUpdateDeviceState(deviceState)
+            //delegate.didUpdateDeviceState(deviceState)
         }
     }
     
@@ -44,18 +45,19 @@ class CorePresenter: CoreServiceDelegate, CoreServiceDataDelegate {
     
     init(delegate: CorePresenterDelegate) {
         self.delegate = delegate
-        self.service = CoreService(delegate: self)
+        self.service = CoreService()
         self.serviceDataSource = CoreServiceDataSource(delegate: self)
+        
+        store.subscribe(self)
     }
     
-    //MARK:- CoreServiceDelegate
-    
-    func coreService(service: CoreService, didUpdateDeviceState state: DeviceState) {
-        deviceState = state
+    deinit {
+        store.unsubscribe(self)
     }
     
-    func coreService(service: CoreService, didUpdateServiceState state: ServiceState) {
-        serviceState = state
+    func newState(state: AppState) {
+// serviceState = state.serviceState
+         deviceState = state.deviceState
     }
     
     //MARK:- CoreServiceDataDelegate
