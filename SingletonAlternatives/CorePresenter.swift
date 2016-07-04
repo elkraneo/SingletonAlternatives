@@ -17,7 +17,6 @@ protocol CorePresenterDelegate {
     func didUpdateData(data: ExampleData)
 }
 
-//CoreServiceDataDelegate
 class CorePresenter: StoreSubscriber {
     
     private var delegate: CorePresenterDelegate!
@@ -46,25 +45,21 @@ class CorePresenter: StoreSubscriber {
     init(delegate: CorePresenterDelegate) {
         self.delegate = delegate
         self.service = CoreService()
-        // self.serviceDataSource = CoreServiceDataSource(delegate: self)
+        self.serviceDataSource = CoreServiceDataSource()
         
         mainStore.subscribe(self)
     }
     
     deinit {
-       // mainStore.unsubscribe(self)
+        mainStore.unsubscribe(self)
     }
     
     func newState(state: AppState) {
-        // serviceState = state.serviceState
         deviceState = state.deviceState
+        serviceState = state.serviceState
+        
+        //dont update display if device .off
+        guard deviceState != .off else { return }
+        serviceData = state.serviceData
     }
-    
-    //MARK:- CoreServiceDataDelegate
-    
-//    func coreServicedidUpdateData(data: ExampleData) {
-//        //dont update display if device .off
-//        guard deviceState != .off else { return }
-//        serviceData = data
-//    }
 }

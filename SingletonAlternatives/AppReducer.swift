@@ -13,7 +13,8 @@ struct AppReducer: Reducer {
     func handleAction(action: Action, state: AppState?) -> AppState {
         return AppState(
             deviceState: deviceStateReducer(action: action, state: state?.deviceState),
-            serviceState: serviceStateReducer(action: action, state: state?.serviceState )
+            serviceState: serviceStateReducer(action: action, state: state?.serviceState),
+            serviceData: dataReducer(action: action, data: state?.serviceData)
         )
     }
 }

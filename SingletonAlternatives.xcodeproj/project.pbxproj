@@ -21,6 +21,8 @@
 		5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E21D251FC8004E12E8 /* CoreService.swift */; };
 		5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E41D2545E6004E12E8 /* CorePresenter.swift */; };
 		597A366A1D2AA51700BFA01E /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A36691D2AA51700BFA01E /* AppReducer.swift */; };
+		597A36901D2AC6D900BFA01E /* DataActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A368F1D2AC6D900BFA01E /* DataActions.swift */; };
+		597A36921D2AC80600BFA01E /* DataReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597A36911D2AC80600BFA01E /* DataReducer.swift */; };
 		59BA22211D2A69720082B0D7 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA22201D2A69720082B0D7 /* ReSwift.framework */; };
 		59BA222F1D2A7FE50082B0D7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA222E1D2A7FE50082B0D7 /* AppState.swift */; };
 		59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22301D2A809E0082B0D7 /* ServiceActions.swift */; };
@@ -67,6 +69,8 @@
 		5945F6E21D251FC8004E12E8 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		5945F6E41D2545E6004E12E8 /* CorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePresenter.swift; sourceTree = "<group>"; };
 		597A36691D2AA51700BFA01E /* AppReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		597A368F1D2AC6D900BFA01E /* DataActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataActions.swift; sourceTree = "<group>"; };
+		597A36911D2AC80600BFA01E /* DataReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReducer.swift; sourceTree = "<group>"; };
 		59BA22201D2A69720082B0D7 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		59BA222E1D2A7FE50082B0D7 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		59BA22301D2A809E0082B0D7 /* ServiceActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceActions.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			children = (
 				59BA22301D2A809E0082B0D7 /* ServiceActions.swift */,
 				59BA22321D2A81530082B0D7 /* DeviceActions.swift */,
+				597A368F1D2AC6D900BFA01E /* DataActions.swift */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			children = (
 				59BA22341D2A81D90082B0D7 /* StateReducer.swift */,
 				597A36691D2AA51700BFA01E /* AppReducer.swift */,
+				597A36911D2AC80600BFA01E /* DataReducer.swift */,
 			);
 			name = Reducers;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				597A36921D2AC80600BFA01E /* DataReducer.swift in Sources */,
 				5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */,
 				59BA222F1D2A7FE50082B0D7 /* AppState.swift in Sources */,
 				597A366A1D2AA51700BFA01E /* AppReducer.swift in Sources */,
@@ -373,6 +380,7 @@
 				5945F6AF1D251992004E12E8 /* AppDelegate.swift in Sources */,
 				5945F6B71D251992004E12E8 /* SingletonAlternatives.xcdatamodeld in Sources */,
 				59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */,
+				597A36901D2AC6D900BFA01E /* DataActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

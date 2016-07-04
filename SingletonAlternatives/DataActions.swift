@@ -1,5 +1,5 @@
 //
-//  AppState.swift
+//  DataActions.swift
 //  SingletonAlternatives
 //
 //  Created by Qardio Cristian on 04/07/16.
@@ -9,8 +9,6 @@
 import Foundation
 import ReSwift
 
-struct AppState: StateType {
-    var deviceState: DeviceState
-    var serviceState: ServiceState
-    var serviceData: ExampleData
+struct UpdateDeviceData: Action {
+    let data: ExampleData
 }
