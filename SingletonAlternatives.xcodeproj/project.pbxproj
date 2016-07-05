@@ -20,7 +20,7 @@
 		5945F6D21D251993004E12E8 /* SingletonAlternativesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6D11D251993004E12E8 /* SingletonAlternativesUITests.swift */; };
 		5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E21D251FC8004E12E8 /* CoreService.swift */; };
 		5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E41D2545E6004E12E8 /* CorePresenter.swift */; };
-		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */; };
+		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,7 @@
 		5945F6D31D251993004E12E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5945F6E21D251FC8004E12E8 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		5945F6E41D2545E6004E12E8 /* CorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePresenter.swift; sourceTree = "<group>"; };
-		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSoure.swift; sourceTree = "<group>"; };
+		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				5945F6E21D251FC8004E12E8 /* CoreService.swift */,
-				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */,
+				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */,
 			);
 			name = FakeBLE;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 				5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */,
 				594394D71D281C9F007957E6 /* DebugView.swift in Sources */,
 				594394D91D28200E007957E6 /* CollectionViewController.swift in Sources */,
-				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */,
+				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */,
 				5945F6AF1D251992004E12E8 /* AppDelegate.swift in Sources */,
 				5945F6B71D251992004E12E8 /* SingletonAlternatives.xcdatamodeld in Sources */,
 			);
