@@ -20,7 +20,7 @@
 		5945F6D21D251993004E12E8 /* SingletonAlternativesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6D11D251993004E12E8 /* SingletonAlternativesUITests.swift */; };
 		5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E21D251FC8004E12E8 /* CoreService.swift */; };
 		5945F6E51D2545E6004E12E8 /* CorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5945F6E41D2545E6004E12E8 /* CorePresenter.swift */; };
-		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */; };
+		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */; };
 		59CC59731D27B69F00812E73 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CC59711D27B69F00812E73 /* RxCocoa.framework */; };
 		59CC59741D27B69F00812E73 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59CC59721D27B69F00812E73 /* RxSwift.framework */; };
 		59CC59781D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */; };
@@ -63,7 +63,7 @@
 		5945F6D31D251993004E12E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5945F6E21D251FC8004E12E8 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		5945F6E41D2545E6004E12E8 /* CorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CorePresenter.swift; sourceTree = "<group>"; };
-		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSoure.swift; sourceTree = "<group>"; };
+		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSource.swift; sourceTree = "<group>"; };
 		59CC59711D27B69F00812E73 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		59CC59721D27B69F00812E73 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCBCentralManagerDelegateProxy.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				5945F6E21D251FC8004E12E8 /* CoreService.swift */,
-				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */,
+				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */,
 				59CC59771D27BDD100812E73 /* RxCBCentralManagerDelegateProxy.swift */,
 			);
 			name = FakeBLE;
@@ -166,9 +166,9 @@
 		59CC59751D27B6AD00812E73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5945F6E11D251F09004E12E8 /* FakeBLE */,
 				59CC59711D27B69F00812E73 /* RxCocoa.framework */,
 				59CC59721D27B69F00812E73 /* RxSwift.framework */,
-				5945F6E11D251F09004E12E8 /* FakeBLE */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 				594394E01D284C98007957E6 /* CollectionViewController.swift in Sources */,
 				5945F6E31D251FC8004E12E8 /* CoreService.swift in Sources */,
 				59313D701D28078F0010709F /* DebugView.swift in Sources */,
-				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */,
+				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */,
 				5945F6AF1D251992004E12E8 /* AppDelegate.swift in Sources */,
 				5945F6B71D251992004E12E8 /* SingletonAlternatives.xcdatamodeld in Sources */,
 			);
