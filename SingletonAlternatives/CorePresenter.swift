@@ -19,34 +19,35 @@ protocol CorePresenterDelegate {
 
 class CorePresenter: StoreSubscriber {
     
-    private var delegate: CorePresenterDelegate!
-    var service: CoreService!
-    var serviceDataSource: CoreServiceDataSource!
+    private var delegate: CorePresenterDelegate
     
     private(set) var deviceState = DeviceState.off {
         didSet {
-            delegate.didUpdateDeviceState(deviceState)
+            if deviceState != oldValue {
+                delegate.didUpdateDeviceState(deviceState)
+            }
         }
     }
     
     private(set) var serviceState = ServiceState.bluetoothOff {
         didSet {
-            delegate.didUpdateServiceState(serviceState)
+            if serviceState != oldValue {
+                delegate.didUpdateServiceState(serviceState)
+            }
         }
     }
     
     private(set) var serviceData: ExampleData? {
         didSet {
-            delegate.didUpdateData(serviceData!)
+            if let serviceData = serviceData{
+                delegate.didUpdateData(serviceData)
+            }
         }
     }
     
     
     init(delegate: CorePresenterDelegate) {
         self.delegate = delegate
-        self.service = CoreService()
-        self.serviceDataSource = CoreServiceDataSource()
-        
         mainStore.subscribe(self)
     }
     
@@ -57,7 +58,7 @@ class CorePresenter: StoreSubscriber {
     func newState(state: AppState) {
         deviceState = state.deviceState
         serviceState = state.serviceState
-        
+
         //dont update display if device .off
         guard deviceState != .off else { return }
         serviceData = state.serviceData

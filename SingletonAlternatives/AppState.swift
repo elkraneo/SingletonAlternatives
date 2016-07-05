@@ -12,5 +12,5 @@ import ReSwift
 struct AppState: StateType {
     var deviceState: DeviceState
     var serviceState: ServiceState
-    var serviceData: ExampleData
+    var serviceData: ExampleData?
 }

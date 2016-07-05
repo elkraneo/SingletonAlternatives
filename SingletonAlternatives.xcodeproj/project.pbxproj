@@ -28,7 +28,7 @@
 		59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22301D2A809E0082B0D7 /* ServiceActions.swift */; };
 		59BA22331D2A81530082B0D7 /* DeviceActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22321D2A81530082B0D7 /* DeviceActions.swift */; };
 		59BA22351D2A81D90082B0D7 /* StateReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BA22341D2A81D90082B0D7 /* StateReducer.swift */; };
-		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */; };
+		59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,7 @@
 		59BA22301D2A809E0082B0D7 /* ServiceActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceActions.swift; sourceTree = "<group>"; };
 		59BA22321D2A81530082B0D7 /* DeviceActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceActions.swift; sourceTree = "<group>"; };
 		59BA22341D2A81D90082B0D7 /* StateReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateReducer.swift; sourceTree = "<group>"; };
-		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSoure.swift; sourceTree = "<group>"; };
+		59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreServiceDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				5945F6E21D251FC8004E12E8 /* CoreService.swift */,
-				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSoure.swift */,
+				59CA7B711D256B3A00C8A9FF /* CoreServiceDataSource.swift */,
 			);
 			name = FakeBLE;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 				59BA22351D2A81D90082B0D7 /* StateReducer.swift in Sources */,
 				594394D71D281C9F007957E6 /* DebugView.swift in Sources */,
 				594394D91D28200E007957E6 /* CollectionViewController.swift in Sources */,
-				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSoure.swift in Sources */,
+				59CA7B721D256B3A00C8A9FF /* CoreServiceDataSource.swift in Sources */,
 				5945F6AF1D251992004E12E8 /* AppDelegate.swift in Sources */,
 				5945F6B71D251992004E12E8 /* SingletonAlternatives.xcdatamodeld in Sources */,
 				59BA22311D2A809E0082B0D7 /* ServiceActions.swift in Sources */,

@@ -16,7 +16,8 @@ var mainStore = Store<AppState>(reducer: AppReducer(), state: nil)
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
+    let coreService = CoreService()
+    let coreServiceDataSource = CoreServiceDataSource()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
